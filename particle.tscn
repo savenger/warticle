@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/particle.png" type="Texture" id=1]
+[ext_resource path="res://particle.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=2]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.2.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_add;
+
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[sub_resource type="Shader" id=4]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.2.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_add;
+
+uniform vec3 color;
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV)*vec4(color,1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 4 )
+shader_param/color = null
+
+[node name="particle" type="Node2D"]
+material = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 5 )
+texture = ExtResource( 1 )
