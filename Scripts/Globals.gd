@@ -1,4 +1,4 @@
 extends Node
 
-const GRAVITY = 1200
-const PLAYER_SPEED = 400
+const GRAVITY = 3000
+const PLAYER_SPEED = 500
