@@ -1,7 +1,7 @@
 extends Node2D
 
 const START_WITH_TUTORIAL: bool = true
-const acc = 3000
+const acc = 4000
 
 var player
 
