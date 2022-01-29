@@ -9,11 +9,9 @@ func _on_Pit_body_entered(body):
 	if body.name == "Player":
 		die()
 
-
 func _on_Left_body_entered(body):
 	if body.name == "Player":
 		die()
-
 
 func _on_Right_body_entered(body):
 	if body.name == "Player":
