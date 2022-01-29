@@ -4,11 +4,11 @@ var player_state = 0 # 0: particle, 1: wave
 var particle_sprite = load("res://Assets/white_circle_100x.png")
 var wave_sprite = load("res://Assets/placeholder_player_wave.png")
 
-var gravity = Globals.GRAVITY
-var player_speed = Globals.SPEED
-var player_speed_wave = player_speed * 3
-var jump_speed = 2000
-var acc = 5000
+const gravity = Globals.GRAVITY
+const player_speed = Globals.SPEED
+const player_speed_wave = player_speed * 3
+const jump_speed = 2000
+const acc = 5000
 
 var vel = Vector2(0,0)
 
