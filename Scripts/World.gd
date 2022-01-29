@@ -1,19 +1,6 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var current_level: String
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Globals.scrool_speed = 10
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func die():
 	get_tree().reload_current_scene()

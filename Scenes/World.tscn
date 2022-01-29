@@ -49,10 +49,10 @@ position = Vector2( 1920, 0 )
 script = ExtResource( 3 )
 
 [node name="rainbow_animation" type="Node2D" parent="."]
-modulate = Color( 1, 0, 1, 1 )
+modulate = Color( 1, 0, 0, 1 )
 
 [node name="Player" parent="rainbow_animation" instance=ExtResource( 2 )]
-position = Vector2( 93, 71 )
+position = Vector2( 500.766, 71 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="rainbow_animation"]
 root_node = NodePath("../..")
