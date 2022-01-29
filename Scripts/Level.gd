@@ -1,7 +1,6 @@
 extends Node2D
 
-const SCROLL_SPEED:int = 500
-const WIDTH:int = 1920
+const level_width: int = Globals.LEVEL_WIDTH
 
 const START_WITH_TUTORIAL: bool = true
 
@@ -36,15 +35,15 @@ func _process(delta):
 	move_level(delta)
 
 func move_level(delta):
-	var speed = SCROLL_SPEED
+	var speed = Globals.scroll_speed
 	if Globals.tutorial_level:
 		speed /= 2
 	if player.player_state == 1:
 		speed = player.player_speed_wave
-	position.x -= (speed + Globals.scrool_speed) * delta
-	if position.x < -WIDTH:
-		Globals.scrool_speed += 1
-		position.x += 2 * WIDTH
+	position.x -= (speed + Globals.scroll_speed) * delta
+	if position.x < -level_width:
+		Globals.scroll_speed += 1
+		position.x += 2 * level_width
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		for child in get_children():
 			remove_child(child)
