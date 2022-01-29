@@ -6,7 +6,7 @@ func _on_Timer_count(new_value):
 var current_level = -1
 
 func _process(_delta):
-	var new_level = Globals.tutorial_level + 1
+	var new_level = Globals.tutorial_level
 	if new_level != current_level:
 		current_level = new_level
 		
