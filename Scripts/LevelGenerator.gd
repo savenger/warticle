@@ -16,7 +16,7 @@ var level_entry_map: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(6):
+	for i in range(Globals.TUTORIAL_LEVEL_COUNT):
 		tutorial_levels.append("res://Scenes/Levels/tutorial%d.tscn" % (i + 1))
 	rng.randomize()
 	init_levels()
@@ -96,12 +96,12 @@ func first_level():
 func load_next_level(level) -> String:
 	if level in tutorial_levels:
 		if tutorial_levels[len(tutorial_levels) - 1] == level:
-			Globals.tutorial_level = false
+			Globals.in_tutorial_level = false
 			Globals.scroll_speed *= 2
 			return level_entry_map[3][0]
 		# return next tutorial level
 		var index = tutorial_levels.find(level)
-		return tutorial_levels[index + 1]
+		return tutorial_levels[Globals.tutorial_level]
 	print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = []

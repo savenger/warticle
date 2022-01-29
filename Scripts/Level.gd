@@ -24,7 +24,6 @@ func _ready():
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		add_child(load(get_parent().current_level).instance())
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move_level(delta)
