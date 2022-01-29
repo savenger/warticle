@@ -2,6 +2,7 @@ extends Node
 
 const LEVEL_PATH: String = 'res://Scenes/Levels'
 const MAX_ENTRY_COUNT: int = 6
+var tutorial_levels: Array = []
 
 var rng = RandomNumberGenerator.new()
 
@@ -15,6 +16,8 @@ var level_entry_map: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for i in range(7):
+		tutorial_levels.append("res://Scenes/Levels/tutorial%d.tscn" % (i + 1))
 	rng.randomize()
 	init_levels()
 
@@ -95,7 +98,17 @@ func get_exits(level) -> Array:
 		ret.append(int(exits[i]))
 	return ret
 
-func load_next_level(level):
+func first_level():
+	return tutorial_levels[0]
+
+func load_next_level(level) -> String:
+	if level in tutorial_levels:
+		if tutorial_levels[len(tutorial_levels) - 1] == level:
+			Globals.tutorial_level = false
+			return level_entry_map[4][0]
+		# return next tutorial level
+		var index = tutorial_levels.find(level)
+		return tutorial_levels[index + 1]
 	print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = []
