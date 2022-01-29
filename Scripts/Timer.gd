@@ -6,5 +6,5 @@ signal count(new_value)
 func _process(delta):
 	if Globals.in_tutorial_level:
 		return
-	count += 1.0/60.0
+	count += delta
 	emit_signal("count", count)
