@@ -1,0 +1,558 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 300
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "rainbow"
+length = 6.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Environment" id=7]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.2
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+glow_bicubic_upscale = true
+
+[node name="MainMenu" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+modulate = Color( 1, 1, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Main/VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 538.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "warticle"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Main/VBoxContainer"]
+margin_top = 542.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/VBoxContainer/CenterContainer"]
+margin_left = 770.0
+margin_top = 74.0
+margin_right = 1149.0
+margin_bottom = 463.0
+custom_constants/separation = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Start" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_right = 379.0
+margin_bottom = 65.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Controls" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 81.0
+margin_right = 379.0
+margin_bottom = 146.0
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button_Settings" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 162.0
+margin_right = 379.0
+margin_bottom = 227.0
+text = "Settings"
+
+[node name="Button_Credits" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 243.0
+margin_right = 379.0
+margin_bottom = 308.0
+text = "Credits"
+
+[node name="Button_Quit" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 324.0
+margin_right = 379.0
+margin_bottom = 389.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="ColorRect" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Controls"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Controls/VBoxContainer"]
+margin_top = 167.0
+margin_right = 1920.0
+margin_bottom = 232.0
+size_flags_vertical = 6
+text = "Controls"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Controls/VBoxContainer"]
+margin_top = 404.0
+margin_right = 1920.0
+margin_bottom = 676.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Controls/VBoxContainer/HBoxContainer"]
+margin_right = 958.0
+margin_bottom = 272.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 958.0
+margin_bottom = 65.0
+text = "A"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 958.0
+margin_bottom = 134.0
+text = "D"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 138.0
+margin_right = 958.0
+margin_bottom = 203.0
+text = "K"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 207.0
+margin_right = 958.0
+margin_bottom = 272.0
+text = "Space"
+align = 1
+valign = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Controls/VBoxContainer/HBoxContainer"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 272.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 958.0
+margin_bottom = 65.0
+text = "Move Left"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 69.0
+margin_right = 958.0
+margin_bottom = 134.0
+text = "Move Right"
+valign = 1
+
+[node name="Label3" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 138.0
+margin_right = 958.0
+margin_bottom = 203.0
+text = "Change Mode"
+valign = 1
+
+[node name="Label4" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 207.0
+margin_right = 958.0
+margin_bottom = 272.0
+text = "Jump"
+valign = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Controls/VBoxContainer"]
+margin_top = 680.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="Button_ControlsBack" type="Button" parent="Control/Controls/VBoxContainer/CenterContainer"]
+margin_left = 854.0
+margin_top = 167.0
+margin_right = 1066.0
+margin_bottom = 232.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="ColorRect" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Credits/VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 201.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Credits"
+align = 1
+valign = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/Credits/VBoxContainer"]
+margin_top = 205.0
+margin_right = 1920.0
+margin_bottom = 875.0
+
+[node name="GridContainer" type="GridContainer" parent="Control/Credits/VBoxContainer/CenterContainer2"]
+margin_left = 199.0
+margin_right = 1721.0
+margin_bottom = 670.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 50
+custom_constants/hseparation = 100
+columns = 2
+
+[node name="Label_camaika" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 15.0
+margin_right = 544.0
+margin_bottom = 80.0
+text = "Camaika"
+align = 1
+valign = 1
+
+[node name="Label_info_camaika" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_right = 1522.0
+margin_bottom = 95.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "itch.io: camaika
+instagramm: camaikaamelung"
+valign = 1
+
+[node name="Label_ciroke" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 145.0
+margin_right = 544.0
+margin_bottom = 210.0
+text = "Ciroke"
+align = 1
+valign = 1
+
+[node name="Label_info_ciroke" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_top = 145.0
+margin_right = 1522.0
+margin_bottom = 210.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = " "
+valign = 1
+
+[node name="Label_Felan" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 260.0
+margin_right = 544.0
+margin_bottom = 325.0
+text = "Felan"
+align = 1
+valign = 1
+
+[node name="Label_info_felan" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_top = 260.0
+margin_right = 1522.0
+margin_bottom = 325.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "itch.io: felan7"
+valign = 1
+
+[node name="Label_lennovative" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 375.0
+margin_right = 544.0
+margin_bottom = 440.0
+text = "Lennovative"
+align = 1
+valign = 1
+
+[node name="Label_info_lennovative" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_top = 375.0
+margin_right = 1522.0
+margin_bottom = 440.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "itch.io: lennovative"
+valign = 1
+
+[node name="Label_paango" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 490.0
+margin_right = 544.0
+margin_bottom = 555.0
+text = "Paango"
+align = 1
+valign = 1
+
+[node name="Label_info_paango" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_top = 490.0
+margin_right = 1522.0
+margin_bottom = 555.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+valign = 1
+
+[node name="Label_savenger" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_top = 605.0
+margin_right = 544.0
+margin_bottom = 670.0
+text = "Savenger"
+align = 1
+valign = 1
+
+[node name="Label_info_savenger" type="Label" parent="Control/Credits/VBoxContainer/CenterContainer2/GridContainer"]
+margin_left = 644.0
+margin_top = 605.0
+margin_right = 1522.0
+margin_bottom = 670.0
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "itch.io: saveng0r"
+valign = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Credits/VBoxContainer"]
+margin_top = 879.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button_CreditsBack" type="Button" parent="Control/Credits/VBoxContainer/CenterContainer"]
+margin_left = 854.0
+margin_top = 68.0
+margin_right = 1066.0
+margin_bottom = 133.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="ColorRect" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Settings/VBoxContainer"]
+margin_top = 202.0
+margin_right = 1920.0
+margin_bottom = 267.0
+size_flags_vertical = 6
+text = "Settings"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Settings/VBoxContainer"]
+margin_top = 473.0
+margin_right = 1920.0
+margin_bottom = 607.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Settings/VBoxContainer/HBoxContainer"]
+margin_right = 958.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 958.0
+margin_bottom = 65.0
+
+[node name="Slider_MusicVolume" type="HSlider" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 379.0
+margin_right = 579.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 16 )
+step = 5.0
+value = 100.0
+tick_count = 4
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 958.0
+margin_bottom = 85.0
+
+[node name="Slider_SFXVolume" type="HSlider" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer2"]
+margin_left = 379.0
+margin_right = 579.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 16 )
+step = 5.0
+value = 100.0
+tick_count = 4
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Settings/VBoxContainer/HBoxContainer"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 958.0
+margin_bottom = 65.0
+text = "Music Volume"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 69.0
+margin_right = 958.0
+margin_bottom = 134.0
+text = "SFX Volume"
+valign = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Settings/VBoxContainer"]
+margin_top = 611.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="Button_SettingsBack" type="Button" parent="Control/Settings/VBoxContainer/CenterContainer"]
+margin_left = 854.0
+margin_top = 202.0
+margin_right = 1066.0
+margin_bottom = 267.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+anims/rainbow = SubResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
+
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Start" to="." method="_on_Button_Start_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Controls" to="." method="_on_Button_Controls_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Settings" to="." method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Credits" to="." method="_on_Button_Credits_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_Button_Quit_pressed"]
+[connection signal="pressed" from="Control/Controls/VBoxContainer/CenterContainer/Button_ControlsBack" to="." method="_on_Button_ControlsBack_pressed"]
+[connection signal="pressed" from="Control/Credits/VBoxContainer/CenterContainer/Button_CreditsBack" to="." method="_on_Button_CreditsBack_pressed"]
+[connection signal="pressed" from="Control/Settings/VBoxContainer/CenterContainer/Button_SettingsBack" to="." method="_on_Button_SettingsBack_pressed"]

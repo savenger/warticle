@@ -1,0 +1,145 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/Splashscreen/globalgamejam_fg.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Splashscreen/globalgamejam_bg.png" type="Texture" id=2]
+[ext_resource path="res://Assets/light.gdshader" type="Shader" id=3]
+[ext_resource path="res://Assets/Splashscreen/globalgamejam_mask.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Splashscreen/spielwerker_mask.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Splashscreen/godot_fg.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Splashscreen/spielwerker_fg.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Splashscreen/blackscreen.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Splashscreen/godot_mask.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Splashscreen/godot_bg.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Splashscreen/name_fg.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Splashscreen/name_mask.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Splashscreen.gd" type="Script" id=13]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/glow_color = Color( 1, 1, 1, 1 )
+shader_param/emission_teture = ExtResource( 4 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect_fg:material:shader_param/emission_teture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "splash"
+length = 8.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect_fg:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect_bg:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect_fg:material:shader_param/emission_teture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 12 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rainbow"
+length = 6.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect_fg:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 3.64
+glow_strength = 0.38
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[node name="Splashscreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect_bg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+
+[node name="TextureRect_fg" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 1, 1 )
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer_Screenchanger" type="AnimationPlayer" parent="."]
+autoplay = "splash"
+playback_speed = 0.25
+anims/RESET = SubResource( 5 )
+anims/splash = SubResource( 1 )
+
+[node name="AnimationPlayer_Rainbow" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+anims/rainbow = SubResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 16.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
