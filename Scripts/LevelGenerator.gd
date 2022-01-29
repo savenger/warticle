@@ -16,18 +16,10 @@ var level_entry_map: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(7):
+	for i in range(6):
 		tutorial_levels.append("res://Scenes/Levels/tutorial%d.tscn" % (i + 1))
 	rng.randomize()
 	init_levels()
-
-func test():
-	var level = load_next_level(level_entry_map[0][0])
-	level = load_next_level(level)
-	level = load_next_level(level)
-	level = load_next_level(level)
-	level = load_next_level(level)
-	level = load_next_level(level)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -105,7 +97,8 @@ func load_next_level(level) -> String:
 	if level in tutorial_levels:
 		if tutorial_levels[len(tutorial_levels) - 1] == level:
 			Globals.tutorial_level = false
-			return level_entry_map[4][0]
+			Globals.scroll_speed *= 2
+			return level_entry_map[3][0]
 		# return next tutorial level
 		var index = tutorial_levels.find(level)
 		return tutorial_levels[index + 1]
