@@ -1,58 +1,35 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/white_circle_100x.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/white_circle_100x_mask.png" type="Texture" id=3]
-
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform sampler2D emission_teture;
-uniform vec4 glow_color : hint_color = vec4(1.0);
-
-void fragment()
-{
-	vec4 current_color = texture(TEXTURE,UV); // what's our current sprite pixel
-	vec4 emission_color = texture(emission_teture,UV); // what's our current emission pixel
-	
-	if(emission_color.r > 0f) // check if we're not black in the emission color.
-	{
-		COLOR = (emission_color + glow_color) // add brightness corrosponding with the emission pixel
-	}
-	else
-	{
-		COLOR = current_color; // we arent over an emission pixel leave alone
-	}
-}"
+[ext_resource path="res://Assets/light.gdshader" type="Shader" id=4]
+[ext_resource path="res://Scripts/Wave.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+shader = ExtResource( 4 )
 shader_param/glow_color = Color( 1, 1, 1, 1 )
 shader_param/emission_teture = ExtResource( 3 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.04
 
-[sub_resource type="Gradient" id=5]
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+[sub_resource type="Shader" id=11]
+code = "// NOTE: Shader automatically converted from Godot Engine 3.4.2.stable's CanvasItemMaterial.
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+shader_type canvas_item;
+render_mode blend_add;
 
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.13812, 0.0, 0, 0 ]
+void fragment(){ 
+	float a = UV.x;
+	COLOR = vec4(a,a,a,1.0);
+}"
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=2]
-trail_divisor = 4
-flag_disable_z = true
-gravity = Vector3( -1000, 0, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 6 )
+[sub_resource type="Gradient" id=14]
+colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -65,9 +42,10 @@ region_rect = Rect2( 0, 0, 104, 104 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Particles2D_Trail" type="Particles2D" parent="."]
+[node name="Wave" type="Line2D" parent="."]
 visible = false
-amount = 50
-local_coords = false
-process_material = SubResource( 2 )
-texture = ExtResource( 1 )
+material = SubResource( 12 )
+position = Vector2( -1, 0 )
+gradient = SubResource( 14 )
+texture_mode = 2
+script = ExtResource( 5 )

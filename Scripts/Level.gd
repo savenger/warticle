@@ -5,7 +5,7 @@ const acc = 3000
 
 var player
 
-var vel = -Globals.scroll_speed
+var vel = Globals.scroll_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,10 +21,10 @@ func _ready():
 		var scene = load(cur_level)
 		var instance = scene.instance()
 		add_child(instance)
+
 	else:
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		add_child(load(get_parent().current_level).instance())
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
