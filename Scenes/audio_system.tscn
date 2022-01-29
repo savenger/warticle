@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Audio/gamejam_2022_bass_0.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Audio/gamejam_2022_drums_full.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Audio/gamejam_2022_arpsynth_openfilter.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scripts/audio_system.gd" type="Script" id=4]
+
+[node name="audio_system" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="asp_beat_drums" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="asp_beat_arpsynth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Arpsynth"
+
+[node name="asp_beat_bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Bass"
