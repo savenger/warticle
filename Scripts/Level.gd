@@ -25,8 +25,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= SCROLL_SPEED
+	position.x -= SCROLL_SPEED + Globals.scrool_speed
 	if position.x < -WIDTH:
+		Globals.scrool_speed += 1
 		position.x += 2 * WIDTH
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		for child in get_children():
