@@ -16,9 +16,8 @@ func _ready():
 		new_points.append(Vector2(x,sin(x*frequency)*amplitude))
 	points = new_points
 	
-	gradient = Gradient.new()
-	gradient.add_point(-1.0,Color(0,0,0))
-	gradient.add_point(1.0,Color(1.0,1.0,1.0))
-	
-	pass # Replace with function body.
+	"""gradient = Gradient.new()
+	gradient.add_point(-1.0,Color(0,0,0,0.0))
+	gradient.add_point(1.0,Color(1.0,1.0,1.0,1.0))
+	"""
 

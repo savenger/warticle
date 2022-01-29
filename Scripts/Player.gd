@@ -17,11 +17,11 @@ func get_input_x():
 func switch_state():
 	if player_state == 0:
 		$Sprite.visible = false
-		$Particles2D_Trail.emitting = true
+		$Wave.visible = true
 		player_state = 1
 	else:
 		$Sprite.visible = true
-		$Particles2D_Trail.emitting = false
+		$Wave.visible = false
 		player_state = 0
 
 func _process(delta):
