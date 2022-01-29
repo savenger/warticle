@@ -20,11 +20,12 @@ func _ready():
 	#var size = rand_range(0.1 , 1.0)
 	speed = rand_range(1.0 , 3.0)
 	position = Vector2( x_pos, y_pos )
-	scale = Vector2(speed,speed)*2
+	scale = Vector2(speed,speed)/3
 	
-	var r_col = rand_range(0.0 , 0.1)
-	var g_col = rand_range(0.0 , 0.1)
-	var b_col = rand_range(0.0 , 0.1)
+	var r_col = pow(rand_range(0.0 , 1),2)*0.3
+	var g_col = pow(rand_range(0.0 , 1),2)*0.3
+	var b_col = pow(rand_range(0.0 , 1),2)*0.3
+	
 	color = Vector3(r_col,g_col,b_col)
 	get_node("Sprite").material.set_shader_param("color",color)
 	
