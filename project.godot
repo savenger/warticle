@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="warticle"
-run/main_scene="res://Scenes/Test/test_room.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]

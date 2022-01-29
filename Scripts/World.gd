@@ -14,3 +14,20 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func die():
+	get_tree().reload_current_scene()
+
+func _on_Pit_body_entered(body):
+	if body.name == "Player":
+		die()
+
+
+func _on_Left_body_entered(body):
+	if body.name == "Player":
+		die()
+
+
+func _on_Right_body_entered(body):
+	if body.name == "Player":
+		die()
