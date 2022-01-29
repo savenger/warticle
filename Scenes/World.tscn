@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1868.5, 9.47387 )
@@ -43,6 +44,10 @@ position = Vector2( 2666, 540.927 )
 rotation = -3.14159
 scale = Vector2( 0.0136391, -66.3855 )
 shape = SubResource( 1 )
+
+[node name="UI" parent="." instance=ExtResource( 5 )]
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]

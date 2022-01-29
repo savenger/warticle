@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/UI_Theme/music_icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI_Theme/sound_icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/audio_system.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -26,50 +29,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control_Score" type="HBoxContainer" parent="TopBar"]
-margin_right = 502.0
-margin_bottom = 71.0
+[node name="Control_Score" type="PanelContainer" parent="TopBar"]
+margin_right = 516.0
+margin_bottom = 79.0
 
-[node name="Label_Score" type="Label" parent="TopBar/Control_Score"]
-margin_top = 3.0
+[node name="Panel" type="HBoxContainer" parent="TopBar/Control_Score"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 509.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label_Score" type="Label" parent="TopBar/Control_Score/Panel"]
 margin_right = 298.0
-margin_bottom = 68.0
+margin_bottom = 65.0
 text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label_ScoreValue" type="Label" parent="TopBar/Control_Score"]
+[node name="Label_ScoreValue" type="Label" parent="TopBar/Control_Score/Panel"]
 margin_left = 302.0
-margin_top = 3.0
 margin_right = 502.0
-margin_bottom = 68.0
+margin_bottom = 65.0
 text = "0000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control_Stretcher" type="Control" parent="TopBar"]
-margin_left = 506.0
-margin_right = 1453.0
-margin_bottom = 71.0
+margin_left = 520.0
+margin_right = 1600.0
+margin_bottom = 79.0
 size_flags_horizontal = 3
 
 [node name="Control_AudioControlls" type="HBoxContainer" parent="TopBar"]
-margin_left = 1457.0
+margin_left = 1604.0
 margin_right = 1888.0
-margin_bottom = 71.0
+margin_bottom = 79.0
+alignment = 2
 
-[node name="Button_SFXMute" type="Button" parent="TopBar/Control_AudioControlls"]
-margin_right = 170.0
-margin_bottom = 71.0
-text = "SFX"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Button_SFXMute" type="CheckButton" parent="TopBar/Control_AudioControlls"]
+margin_right = 140.0
+margin_bottom = 79.0
+icon = ExtResource( 3 )
+flat = true
 
-[node name="Button_MusicMute" type="Button" parent="TopBar/Control_AudioControlls"]
-margin_left = 174.0
-margin_right = 431.0
-margin_bottom = 71.0
-text = "Music"
+[node name="Button_MusicMute" type="CheckButton" parent="TopBar/Control_AudioControlls"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 79.0
+icon = ExtResource( 2 )
+flat = true
+
+[node name="audio_system" parent="." instance=ExtResource( 4 )]
+
+[connection signal="toggled" from="TopBar/Control_AudioControlls/Button_SFXMute" to="audio_system" method="_on_Button_SFXMute_toggled"]
+[connection signal="toggled" from="TopBar/Control_AudioControlls/Button_MusicMute" to="audio_system" method="_on_Button_MusicMute_toggled"]
