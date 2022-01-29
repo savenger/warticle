@@ -9,10 +9,24 @@
 position = Vector2( 223, 596 )
 
 [node name="Floor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 979, 844 )
+position = Vector2( 977, 1002 )
+scale = Vector2( 2.04, 0.088 )
+
+[node name="Ceiling" parent="." instance=ExtResource( 1 )]
+position = Vector2( 961, 61.0001 )
 scale = Vector2( 2.04, 0.088 )
 
 [node name="Wall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1147, 691 )
+position = Vector2( 1120, 852 )
 rotation = 1.5708
 scale = Vector2( 0.642, 0.054 )
+
+[node name="Border_right" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1871, 540 )
+rotation = 1.5708
+scale = Vector2( 1.19, 0.06 )
+
+[node name="Border_left" parent="." instance=ExtResource( 1 )]
+position = Vector2( 55.0001, 528 )
+rotation = 1.5708
+scale = Vector2( 1.19, 0.06 )
