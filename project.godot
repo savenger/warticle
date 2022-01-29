@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="warticle"
-run/main_scene="res://Scenes/Test/test_room.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -23,10 +23,10 @@ LevelGenerator="*res://Scripts/LevelGenerator.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/resizable=false
 window/size/test_width=960
 window/size/test_height=540
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 

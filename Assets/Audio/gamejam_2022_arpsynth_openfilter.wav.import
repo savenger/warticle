@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gamejam_2022_arpsynth_openfilter.wav-7a47e893887f93ef45ffbd85c9cc4d35.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/gamejam_2022_arpsynth_openfilter.wav"
+dest_files=[ "res://.import/gamejam_2022_arpsynth_openfilter.wav-7a47e893887f93ef45ffbd85c9cc4d35.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

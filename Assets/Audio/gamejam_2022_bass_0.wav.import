@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/gamejam_2022_bass_0.wav-d6fe2a33d1526c89bb9b0dff3fe99e59.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/gamejam_2022_bass_0.wav"
+dest_files=[ "res://.import/gamejam_2022_bass_0.wav-d6fe2a33d1526c89bb9b0dff3fe99e59.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
