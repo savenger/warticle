@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
 var player_state = 0 # 0: particle, 1: wave
-var particle_sprite = load("res://Assets/white_circle_100x.png")
-var wave_sprite = load("res://Assets/placeholder_player_wave.png")
 
 var gravity = Globals.GRAVITY
 var player_speed = Globals.SPEED
@@ -18,10 +16,12 @@ func get_input_x():
 
 func switch_state():
 	if player_state == 0:
-		$Sprite.texture = wave_sprite
+		$Sprite.visible = false
+		$Particles2D_Trail.emitting = true
 		player_state = 1
 	else:
-		$Sprite.texture = particle_sprite
+		$Sprite.visible = true
+		$Particles2D_Trail.emitting = false
 		player_state = 0
 
 func _process(delta):
