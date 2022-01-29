@@ -95,13 +95,21 @@ func first_level():
 
 func load_next_level(level) -> String:
 	if level in tutorial_levels:
-		if tutorial_levels[len(tutorial_levels) - 1] == level:
-			Globals.in_tutorial_level = false
-			Globals.scroll_speed *= 2
-			return level_entry_map[3][0]
+		if Globals.in_tutorial_level:
+			if tutorial_levels[len(tutorial_levels) - 1] == level:
+				Globals.in_tutorial_level = false
+				Globals.scroll_speed *= 2
+				return tutorial_levels[0]
+		else:
+			# this will happen directly after finishing the tutorial 
+			# (player is in first tutorial level again)
+			return(level_entry_map[3][0])
 		# return next tutorial level
 		var index = tutorial_levels.find(level)
-		return tutorial_levels[Globals.tutorial_level]
+		if index == 0:
+			return tutorial_levels[Globals.tutorial_level]
+		else:
+			return tutorial_levels[0]
 	print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = []
