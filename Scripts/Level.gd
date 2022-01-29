@@ -4,8 +4,6 @@ const START_WITH_TUTORIAL: bool = true
 
 var player
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(get_parent().name)
@@ -20,6 +18,7 @@ func _ready():
 		var scene = load(cur_level)
 		var instance = scene.instance()
 		add_child(instance)
+
 	else:
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		add_child(load(get_parent().current_level).instance())

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI_Theme/music_icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI_Theme/sound_icon.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/audio_system.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=5]
+[ext_resource path="res://Assets/UI_Theme/architxt_32px.tres" type="DynamicFont" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -12,6 +13,28 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+outline_size = 1
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "fadeout"
+length = 5.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 0.392292 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -86,6 +109,35 @@ icon = ExtResource( 2 )
 flat = true
 
 [node name="audio_system" parent="." instance=ExtResource( 4 )]
+
+[node name="BottomBar" type="Control" parent="."]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="BottomBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BottomBar/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1913.0
+margin_bottom = 101.0
+custom_fonts/bold_font = SubResource( 5 )
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "You are a little light particle \\nPress [b]A/D [/b] to move left/right."
+text = "You are a little light particle \\nPress A/D  to move left/right."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BottomBar"]
+anims/fadeout = SubResource( 4 )
 
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_SFXMute" to="audio_system" method="_on_Button_SFXMute_toggled"]
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_MusicMute" to="audio_system" method="_on_Button_MusicMute_toggled"]
