@@ -96,7 +96,7 @@ func get_exits(level) -> Array:
 	return ret
 
 func load_next_level(level):
-	# print("Connecting level ", level)
+	print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = []
 	var index = 0;
@@ -108,5 +108,10 @@ func load_next_level(level):
 	var rnd_exit = rng.randi_range(0, len(possible_exits) - 1)
 	rnd_exit = possible_exits[rnd_exit]
 	var rnd_entry_level = rng.randi_range(0, len(level_entry_map[rnd_exit]) - 1)
-	# print(" ... to level ", level_entry_map[rnd_exit][rnd_entry_level])
+	print(" ... to level ", level_entry_map[rnd_exit][rnd_entry_level])
 	return(level_entry_map[rnd_exit][rnd_entry_level])
+
+func random_level():
+	var entry = rng.randi_range(0, MAX_ENTRY_COUNT - 1)
+	var level = rng.randi_range(0, len(level_entry_map[entry]) - 1)
+	return(level_entry_map[entry][level])
