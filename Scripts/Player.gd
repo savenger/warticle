@@ -40,6 +40,12 @@ func _process(delta):
 		switch_state()
 
 func _physics_process(delta):
+	if Input.is_action_pressed("volume_up"):
+		Globals.audio_volume += 10 * delta
+		Globals.set_master_volume(Globals.audio_volume)
+	if Input.is_action_pressed("volume_down"):
+		Globals.audio_volume -= 10 * delta
+		Globals.set_master_volume(Globals.audio_volume)
 	if player_state == 0: # particle movement
 		if Input.is_action_pressed("move_right_button") or Input.is_action_pressed("move_left_button"):
 			finish_tutorial_level(0)
