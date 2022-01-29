@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
+[ext_resource path="res://particles.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1868.5, 9.47387 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="particles" parent="." instance=ExtResource( 4 )]
 
 [node name="Level1" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -16,3 +22,28 @@ script = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 93, 71 )
+
+[node name="Pit" type="Area2D" parent="."]
+
+[node name="PitCollision" type="CollisionShape2D" parent="Pit"]
+position = Vector2( 1290.5, 1163 )
+shape = SubResource( 1 )
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Left"]
+position = Vector2( -89, 565 )
+scale = Vector2( -0.0136391, 66.3855 )
+shape = SubResource( 1 )
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="RightCollision" type="CollisionShape2D" parent="Right"]
+position = Vector2( 2666, 540.927 )
+rotation = -3.14159
+scale = Vector2( 0.0136391, -66.3855 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]
+[connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_Right_body_entered"]
