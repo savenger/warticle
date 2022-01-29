@@ -15,8 +15,12 @@ func get_input_x():
 	return x_speed
 
 func finish_tutorial_level(level):
+	if not Globals.in_tutorial_level:
+		return
 	if Globals.tutorial_level == level:
-		Globals.tutorial_level += 1
+		print("Yeah, you finished level %d" % level)
+		if Globals.tutorial_level < Globals.TUTORIAL_LEVEL_COUNT - 1:
+			Globals.tutorial_level += 1
 
 func switch_state():
 	if player_state == 0:
@@ -25,11 +29,13 @@ func switch_state():
 		$Wave.visible = true
 		player_state = 1
 	else:
+		finish_tutorial_level(4)
 		$Sprite.visible = true
 		$Wave.visible = false
 		player_state = 0
 
 func _process(delta):
+	finish_tutorial_level(5)
 	if Input.is_action_just_pressed("switch_button"):
 		switch_state()
 
