@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var player_state = 0 # 0: particle, 1: wave
-var particle_sprite = load("res://Assets/player_particle.png")
+var particle_sprite = load("res://Assets/white_circle_100x.png")
 var wave_sprite = load("res://Assets/placeholder_player_wave.png")
 
 var gravity = Globals.GRAVITY
