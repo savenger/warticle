@@ -1,6 +1,6 @@
 extends Node2D
 
-const SCROLL_SPEED:int = 10
+const SCROLL_SPEED:int = 500
 const WIDTH:int = 1920
 
 
@@ -25,9 +25,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= SCROLL_SPEED + Globals.scrool_speed
+	position.x -= (SCROLL_SPEED + Globals.scrool_speed) * delta
 	if position.x < -WIDTH:
-		Globals.scrool_speed += 1
+		Globals.scrool_speed += 10
 		position.x += 2 * WIDTH
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		for child in get_children():
