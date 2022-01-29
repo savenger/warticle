@@ -4,5 +4,5 @@ var count = 0
 signal count(new_value)
 
 func _process(delta):
-	count += 1.0/60.0
+	count += delta
 	emit_signal("count", count)
