@@ -3,12 +3,14 @@ extends KinematicBody2D
 var player_state = 0 # 0: particle, 1: wave
 
 const gravity = Globals.GRAVITY
-const player_speed = Globals.SPEED
-const player_speed_wave = player_speed * 3
+const speed = 900
+const wave_speed = speed * 2
 const jump_speed = 2000
 const acc = 5000
 
 var vel = Vector2(0,0)
+var scroll_speedup = false
+var can_jump = true
 
 func get_input_x():
 	var x_speed = Input.get_action_strength("move_right_button") - Input.get_action_strength("move_left_button")
@@ -35,24 +37,26 @@ func switch_state():
 		player_state = 0
 
 func _process(delta):
-	finish_tutorial_level(5)
-	if Input.is_action_just_pressed("switch_button"):
-		switch_state()
-
-func _physics_process(delta):
+	#finish_tutorial_level(5)
 	if Input.is_action_pressed("volume_up"):
 		Globals.audio_volume += 10 * delta
 		Globals.set_master_volume(Globals.audio_volume)
 	if Input.is_action_pressed("volume_down"):
 		Globals.audio_volume -= 10 * delta
 		Globals.set_master_volume(Globals.audio_volume)
+	if Input.is_action_just_pressed("switch_button"):
+		switch_state()
+	scroll_speedup = self.global_position.x > Globals.LEVEL_WIDTH * 0.96 and Input.is_action_pressed("move_right_button")
+
+func _physics_process(delta):
 	if player_state == 0: # particle movement
-		if Input.is_action_pressed("move_right_button") or Input.is_action_pressed("move_left_button"):
-			finish_tutorial_level(0)
 		var input_x = get_input_x()
-		var target_speed = input_x * (player_speed - Globals.scroll_speed * input_x * 0.4)
+		if input_x != 0:
+			finish_tutorial_level(0)
+		if is_on_floor() and not can_jump:
+			can_jump = true
+		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
-		vel.x -= Globals.scroll_speed * 0.05
 		vel.y += gravity * delta
 		if Input.is_action_pressed("jump_button"):
 			if is_on_floor():
@@ -64,17 +68,18 @@ func _physics_process(delta):
 					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
-					vel.x -= player_speed * 2
+					vel.x -= Globals.scroll_speed * 2
 				if Input.is_action_pressed("move_left_button"):
 					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
-					vel.x += player_speed * 2
+					vel.x += Globals.scroll_speed * 2
 	else: # wave movement
-		vel.y = 0
-		vel.x = move_toward(vel.x, player_speed_wave, delta * acc)
+		vel = Vector2(0,0)
 		if Input.is_action_pressed("jump_button"):
 			finish_tutorial_level(1)
 			switch_state()
-			vel.y -= jump_speed
+			if can_jump:
+				vel.y -= jump_speed
+				can_jump = false
 	vel = move_and_slide(vel, Vector2(0, -1))
