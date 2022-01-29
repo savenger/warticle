@@ -1,8 +1,11 @@
 extends Node2D
 
 const START_WITH_TUTORIAL: bool = true
+const acc = 3000
 
 var player
+
+var vel = Globals.scroll_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,14 +27,17 @@ func _ready():
 		add_child(load(get_parent().current_level).instance())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	move_level(delta)
 
 func move_level(delta):
-	var speed = Globals.scroll_speed
+	var target_speed = Globals.scroll_speed
 	if player.player_state == 1:
-		speed = player.player_speed_wave
-	position.x -= speed * delta
+		target_speed += player.wave_speed
+	if player.scroll_speedup:
+		target_speed += player.speed
+	vel = move_toward(vel, target_speed, delta * acc)
+	position.x -= vel * delta
 	if position.x < -Globals.LEVEL_WIDTH:
 		Globals.scroll_speed += 1
 		position.x += 2 * Globals.LEVEL_WIDTH
