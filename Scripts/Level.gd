@@ -1,14 +1,9 @@
 extends Node2D
 
-const level_width: int = Globals.LEVEL_WIDTH
-
 const START_WITH_TUTORIAL: bool = true
 
 var player
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,14 +31,12 @@ func _process(delta):
 
 func move_level(delta):
 	var speed = Globals.scroll_speed
-	if Globals.tutorial_level:
-		speed /= 2
 	if player.player_state == 1:
 		speed = player.player_speed_wave
-	position.x -= (speed + Globals.scroll_speed) * delta
-	if position.x < -level_width:
+	position.x -= speed * delta
+	if position.x < -Globals.LEVEL_WIDTH:
 		Globals.scroll_speed += 1
-		position.x += 2 * level_width
+		position.x += 2 * Globals.LEVEL_WIDTH
 		get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 		for child in get_children():
 			remove_child(child)
