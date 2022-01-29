@@ -66,7 +66,7 @@ func _physics_process(delta):
 					vel.x += player_speed * 2
 	else: # wave movement
 		vel.y = 0
-		vel.x = move_toward(vel.x, player_speed_wave, delta ) # * acc)
+		vel.x = move_toward(vel.x, player_speed_wave, delta * acc)
 		if Input.is_action_pressed("jump_button"):
 			finish_tutorial_level(1)
 			switch_state()

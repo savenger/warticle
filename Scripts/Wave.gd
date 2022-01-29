@@ -26,7 +26,7 @@ func _process(delta):
 		var x = i-length
 		var y = congestion(x)*sin(x*frequency+offset)*amplitude
 		points[i] = Vector2(x,y)
-	offset += (get_parent().player_speed_wave + get_parent().vel.x)/60 *frequency
+	offset -= (get_parent().player_speed_wave + get_parent().vel.x)/60 *frequency /PI
 	
 	
 	
