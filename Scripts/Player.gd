@@ -3,8 +3,8 @@ extends KinematicBody2D
 var player_state = 0 # 0: particle, 1: wave
 
 const gravity = Globals.GRAVITY
-const speed = 600
-const wave_speed = speed * 4
+const speed = 900
+const wave_speed = speed * 2
 const jump_speed = 2000
 const acc = 5000
 
@@ -37,7 +37,7 @@ func switch_state():
 		player_state = 0
 
 func _process(delta):
-	finish_tutorial_level(5)
+	#finish_tutorial_level(5)
 	if Input.is_action_pressed("volume_up"):
 		Globals.audio_volume += 10 * delta
 		Globals.set_master_volume(Globals.audio_volume)
@@ -46,7 +46,7 @@ func _process(delta):
 		Globals.set_master_volume(Globals.audio_volume)
 	if Input.is_action_just_pressed("switch_button"):
 		switch_state()
-	scroll_speedup = self.global_position.x > Globals.LEVEL_WIDTH * 0.9 and Input.is_action_pressed("move_right_button")
+	scroll_speedup = self.global_position.x > Globals.LEVEL_WIDTH * 0.96 and Input.is_action_pressed("move_right_button")
 
 func _physics_process(delta):
 	if player_state == 0: # particle movement
@@ -55,7 +55,7 @@ func _physics_process(delta):
 			finish_tutorial_level(0)
 		if is_on_floor() and not can_jump:
 			can_jump = true
-		var target_speed = input_x * speed * int(!scroll_speedup)
+		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
 		if Input.is_action_pressed("jump_button"):
