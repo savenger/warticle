@@ -8,11 +8,17 @@ Get savely through the randomly generated level without falling out or touching 
 
 
 Controls
+
 Key	Control
+
 A	Move Left
+
 D	Move Right
+
 Space	Jump
+
 K	Switch between particle and wave form
+
 
 Touch the Left/bottom side of screen = Death 
 
