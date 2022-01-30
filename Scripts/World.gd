@@ -1,6 +1,7 @@
 extends Node2D
 
 var current_level: String
+var current_slices: Array
 
 func die():
 	get_tree().reload_current_scene()
