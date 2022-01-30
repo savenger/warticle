@@ -62,7 +62,7 @@ func _physics_process(delta):
 		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
-		if Input.is_action_pressed("jump_button"):
+		if Input.is_action_just_pressed("jump_button"):
 			if is_on_floor():
 				finish_tutorial_level(1)
 				vel.y -= jump_speed
@@ -80,7 +80,7 @@ func _physics_process(delta):
 					vel.x += Globals.scroll_speed * 2
 	else: # wave movement
 		vel = Vector2(0,0)
-		if Input.is_action_pressed("jump_button"):
+		if Input.is_action_just_pressed("jump_button"):
 			finish_tutorial_level(1)
 			switch_state()
 			if can_jump:
