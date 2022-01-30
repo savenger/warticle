@@ -13,8 +13,7 @@ var scroll_speedup = false
 var can_jump = true
 
 func _ready():
-	scale.x *= 0.5
-	scale.y *= 0.5
+	pass
 
 func get_input_x():
 	var x_speed = Input.get_action_strength("move_right_button") - Input.get_action_strength("move_left_button")
