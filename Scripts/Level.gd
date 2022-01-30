@@ -53,6 +53,7 @@ func move_level(delta):
 	if player.scroll_speedup:
 		target_speed += player.speed
 	vel = move_toward(vel, target_speed, delta * acc)
+	Globals.applyed_scroll_speed = vel
 	position.x -= vel * delta
 	if position.x < -Globals.LEVEL_WIDTH:
 		Globals.scroll_speed += 1
