@@ -11,6 +11,9 @@ const acc = 8000
 var vel = Vector2(0,0)
 var scroll_speedup = false
 var can_jump = true
+var distance: float = 0
+var current_score: float = 0
+var time_as_wave: float = 0
 
 func _ready():
 	pass
@@ -39,8 +42,12 @@ func switch_state():
 		$Sprite.visible = true
 		$Wave.visible = false
 		player_state = 0
+		time_as_wave = 0
 
 func _process(delta):
+	current_score += (float(Globals.scroll_speed) * min(time_as_wave, 30) if player_state == 1 else (vel.x if vel.x >= 0 else 0)) / 6000
+	if current_score > Globals.score:
+		Globals.score = current_score
 	#finish_tutorial_level(5)
 	if Input.is_action_pressed("volume_up"):
 		Globals.audio_volume += 10 * delta
@@ -82,11 +89,8 @@ func _physics_process(delta):
 					vel.x += Globals.scroll_speed * 2
 	else: # wave movement
 		vel.y = 0
+		time_as_wave += delta * 20
 		var target_speed = get_input_x() * speed / 2 * int(!scroll_speedup)
-		#var multiplier = speed
-		#if Globals.in_tutorial_level:
-		#	multiplier /= 2
-		#var target_speed = -Globals.scroll_speed + multiplier * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		if Input.is_action_just_pressed("jump_button"):
 			finish_tutorial_level(1)
