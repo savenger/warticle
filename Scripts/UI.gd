@@ -1,19 +1,25 @@
 extends Control
 
 var current_level = -1
+var is_active = false
+
 
 func _process(_delta):
 	$TopBar/Control_Score/Panel/Label_ScoreValue.text = str(int(Globals.score))
 	var new_level = Globals.tutorial_level
 	if new_level != current_level:
+		
 		current_level = new_level
 		
 		var new_text = ""
-		var is_active = true
+		if current_level == 0:
+			is_active = true
+			$BottomBar/PanelContainer.visible = true
+		
 		 
 		match current_level:
 			0:
-				new_text = "You are a little photon. You are a [wave amp=50 freq=16]wave[/wave] , and you are a [shake rate=5 level=10]particle[/shake]. [shake rate=5 level=10][rainbow freq=0.2 sat=10 val=20][wave amp=50 freq=16]A warticle![/wave][/rainbow][/shake] \nPress [b]A/D [/b] to move left/right."
+				new_text = "You are a little photon. You are a [wave amp=50 freq=16]wave[/wave] , and you are a [shake rate=5 level=10]particle[/shake]. [shake rate=5 level=10][rainbow freq=0.2 sat=10 val=20][wave amp=50 freq=16]A warticle![/wave][/rainbow][/shake] \nPress [b]A/D [/b] to move left/right. Do mind the left wall, it means death!"
 			1: 
 				new_text = "Press [b]Space[/b] to jump."
 			2: 
@@ -23,11 +29,8 @@ func _process(_delta):
 			4: 
 				new_text = "Press [b]K[/b] to switch back \n You can't control the wave's direction"
 			5: 
-				new_text = "Keep up with the flow.\nLeft wall = also Death"
-			6:
 				new_text = "You go be a good little particle and get that highscore!"
 				is_active = false
-		
 		
 		update_text(new_text, is_active)
 

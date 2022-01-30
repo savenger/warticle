@@ -45,9 +45,12 @@ func switch_state():
 		time_as_wave = 0
 
 func _process(delta):
-	current_score += (float(Globals.scroll_speed) * min(time_as_wave, 30) if player_state == 1 else (vel.x if vel.x >= 0 else 0)) / 6000
-	if current_score > Globals.score:
-		Globals.score = current_score
+	if not Globals.in_tutorial_level:
+		current_score += (float(Globals.scroll_speed) * min(time_as_wave, 30) if player_state == 1 else (vel.x if vel.x >= 0 else 0)) / 6000
+		if scroll_speedup:
+			current_score += float(Globals.scroll_speed) / 6000
+		if current_score > Globals.score:
+			Globals.score = current_score
 	#finish_tutorial_level(5)
 	if Input.is_action_pressed("volume_up"):
 		Globals.audio_volume += 10 * delta
@@ -67,6 +70,8 @@ func _physics_process(delta):
 		if is_on_floor() and not can_jump:
 			can_jump = true
 		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
+		if Globals.tutorial_level == 0:
+			target_speed = 0
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
 		if Input.is_action_just_pressed("jump_button") and Globals.tutorial_level >= 1:
@@ -77,13 +82,11 @@ func _physics_process(delta):
 			elif is_on_wall():
 				finish_tutorial_level(2)
 				if Input.is_action_pressed("move_right_button"):
-					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x -= Globals.scroll_speed * 2
 					$SFX/ASP_Jump.play()
 				if Input.is_action_pressed("move_left_button"):
-					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x += Globals.scroll_speed * 2

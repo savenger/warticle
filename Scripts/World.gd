@@ -17,10 +17,13 @@ func customComparison(a, b):
 """
 
 func die():
-	Globals.highscores.append($Timer.count)
+	Globals.highscores.append(Globals.score)
 	Globals.highscores.sort()
 	Globals.highscores.invert()
+	
 	get_tree().reload_current_scene()
+	Globals.scroll_speed = 250
+	Globals.score = 0
 
 func _on_Pit_body_entered(body):
 	if body.name == "Player":
