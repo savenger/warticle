@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Levels/level_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Levels/border_tileset.tres" type="TileSet" id=2]
 
 [node name="level" type="Node2D"]
 
@@ -9,3 +10,10 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 180, 180 )
 format = 1
 tile_data = PoolIntArray( 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0 )
+
+[node name="TileMap_Border" type="TileMap" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 180, 180 )
+format = 1
+tile_data = PoolIntArray( 196616, 0, 196609, 196617, 0, 196610, 196618, 0, 196611, 327682, 0, 196609, 327683, 0, 196610, 327684, 0, 196611 )
