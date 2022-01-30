@@ -4,7 +4,7 @@ var current_level: String
 var current_slices: Array
 
 func die():
-	Globals.highscores.append( "Test "+ str($Timer.count) )
+	Globals.highscores.append( "Test "+ str(Globals.score))
 	Globals.highscores.sort()
 	Globals.highscores.invert()
 	get_tree().reload_current_scene()
