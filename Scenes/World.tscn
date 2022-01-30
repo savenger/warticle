@@ -93,7 +93,7 @@ margin_bottom = 1080.0
 environment = SubResource( 3 )
 
 [node name="Wall" parent="." instance=ExtResource( 7 )]
-position = Vector2( 959, -95 )
+position = Vector2( 955, -74 )
 scale = Vector2( 1.04437, 1 )
 
 [connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]
