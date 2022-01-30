@@ -27,14 +27,14 @@ tracks/0/keys = {
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 65536, 0, 0, 65537, 0, 0, 131072, 0, 0, 131073, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 65536, 0, 0, 65537, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0 )
 
 [node name="TileMap_Border" type="TileMap" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 9, 0, 0, 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 8, 1, 0, 11, 65536, 0, 65544, 65537, 0, 131083, 131072, 0, 196616, 131073, 0, 196619, 327684, 0, 196609, 327685, 0, 196610, 327686, 0, 196610, 327687, 0, 196611 )
+tile_data = PoolIntArray( 0, 0, 8, 1, 0, 11, 65536, 0, 196616, 65537, 0, 196619, 327684, 0, 196609, 327685, 0, 196610, 327686, 0, 196610, 327687, 0, 196611 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rainbow"
