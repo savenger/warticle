@@ -595,6 +595,7 @@ environment = SubResource( 7 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Start" to="." method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Settings" to="." method="_on_Button_Settings_pressed"]
@@ -604,4 +605,6 @@ autoplay = true
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_Button_Quit_pressed"]
 [connection signal="pressed" from="Control/Controls/VBoxContainer/CenterContainer/Button_ControlsBack" to="." method="_on_Button_ControlsBack_pressed"]
 [connection signal="pressed" from="Control/Credits/VBoxContainer/CenterContainer/Button_CreditsBack" to="." method="_on_Button_CreditsBack_pressed"]
+[connection signal="value_changed" from="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Slider_MusicVolume" to="." method="_on_Slider_MusicVolume_value_changed"]
+[connection signal="value_changed" from="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer2/Slider_SFXVolume" to="." method="_on_Slider_SFXVolume_value_changed"]
 [connection signal="pressed" from="Control/Settings/VBoxContainer/CenterContainer/Button_SettingsBack" to="." method="_on_Button_SettingsBack_pressed"]
