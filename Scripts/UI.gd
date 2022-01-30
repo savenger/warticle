@@ -1,11 +1,9 @@
 extends Control
 
-func _on_Timer_count(new_value):
-	$TopBar/Control_Score/Panel/Label_ScoreValue.text = str(int(new_value))
-
 var current_level = -1
 
 func _process(_delta):
+	$TopBar/Control_Score/Panel/Label_ScoreValue.text = str(int(Globals.score))
 	var new_level = Globals.tutorial_level
 	if new_level != current_level:
 		current_level = new_level
