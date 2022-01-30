@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/particles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Timer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Test/test_wall.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=2]
@@ -88,8 +87,6 @@ shape = SubResource( 1 )
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="Timer" parent="." instance=ExtResource( 6 )]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
 
@@ -100,4 +97,3 @@ scale = Vector2( 1.04437, 1 )
 [connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]
 [connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
 [connection signal="body_entered" from="Right" to="." method="_on_Right_body_entered"]
-[connection signal="count" from="Timer" to="UI" method="_on_Timer_count"]

@@ -8,6 +8,7 @@ var audio_volume: float = -30.0
 var scroll_speed: int = 250
 var tutorial_level: int = 0
 var in_tutorial_level: bool = true
+var score: int = 0
 var highscores = []
 
 func set_master_volume(new_volume):
