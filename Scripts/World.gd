@@ -5,6 +5,8 @@ var current_slices: Array
 
 func die():
 	Globals.highscores.append( "Test "+ str($Timer.count) )
+	Globals.highscores.sort()
+	Globals.highscores.invert()
 	get_tree().reload_current_scene()
 
 func _on_Pit_body_entered(body):
