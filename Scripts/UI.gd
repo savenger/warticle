@@ -1,15 +1,21 @@
 extends Control
 
 var current_level = -1
+var is_active = false
+
 
 func _process(_delta):
 	$TopBar/Control_Score/Panel/Label_ScoreValue.text = str(int(Globals.score))
 	var new_level = Globals.tutorial_level
 	if new_level != current_level:
+		
 		current_level = new_level
 		
 		var new_text = ""
-		var is_active = true
+		if current_level == 0:
+			is_active = true
+			$BottomBar/PanelContainer.visible = true
+		
 		 
 		match current_level:
 			0:
