@@ -41,24 +41,22 @@ func mix(a,b,v):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= delta * Globals.applyed_scroll_speed * speed * 0.5
-	"""
-	var x = (Globals.applyed_scroll_speed-player.speed)/(player.wave_speed-player.speed)
-	x = sqrt(x)
-	x = sqrt(x)
-	var normale_scale = Vector2(speed,speed)/3
-	var at_speed_scale = Vector2(speed*2,speed/3/2)
-	
-	scale.x = Globals.applyed_scroll_speed/250.0#mix(normale_scale.x,at_speed_scale.x,x)
-	scale.y = 1/sqrt(Globals.applyed_scroll_speed/250.0)
-	"""
-
-	if player.player_state == 0: # particle
-		scale.x = speed/3
-		scale.y = speed/3
-	else: # wave
-		scale.x = speed*2
-		scale.y = speed/3/2
-	
+	if 1:
+		var x = (Globals.applyed_scroll_speed-player.speed)/(player.wave_speed-player.speed)
+		x = sqrt(x)
+		x = sqrt(x)
+		var normale_scale = Vector2(speed,speed)/3
+		var at_speed_scale = Vector2(speed*2,speed/3/2)
+		
+		scale.x = Globals.applyed_scroll_speed/250.0#mix(normale_scale.x,at_speed_scale.x,x)
+		scale.y = 1/sqrt(Globals.applyed_scroll_speed/250.0)
+	else:
+		if player.player_state == 0: # particle
+			scale.x = speed/3
+			scale.y = speed/3
+		else: # wave
+			scale.x = speed*2
+			scale.y = speed/3/2
 	
 	var left_border = -100   #camera.position.x - s_size.x / 1.5
 	var right_border = s_size.x+100  #camera.position.x + s_size.x / 1.5

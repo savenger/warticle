@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Levels/level_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Levels/border_tileset.tres" type="TileSet" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rainbow"
+length = 8.0
+loop = true
+step = 1.333
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap_Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.333, 2.666, 2.667, 3.999, 5.332, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [node name="level" type="Node2D"]
 
@@ -17,3 +35,8 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 180, 180 )
 format = 1
 tile_data = PoolIntArray( 65544, 0, 196609, 65545, 0, 196610, 65546, 0, 196611, 196612, 0, 196609, 196613, 0, 196610, 196614, 0, 196611, 262144, 0, 8, 262145, 0, 11, 327680, 0, 196616, 327681, 0, 196614, 327682, 0, 196611 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+playback_speed = 2.0
+anims/rainbow = SubResource( 1 )
