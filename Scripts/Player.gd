@@ -86,4 +86,6 @@ func _physics_process(delta):
 			if can_jump:
 				vel.y -= jump_speed
 				can_jump = false
+		if is_on_wall():
+			switch_state()
 	vel = move_and_slide(vel, Vector2(0, -1))
