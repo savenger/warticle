@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HighscoreBoard.gd" type="Script" id=2]
@@ -23,33 +23,6 @@ Button/styles/normal = SubResource( 4 )
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
-resource_name = "rainbow"
-length = 6.0
-loop = true
-step = 1.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Control:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
-}
-
-[sub_resource type="Environment" id=9]
-background_mode = 4
-glow_enabled = true
-glow_intensity = 0.2
-glow_bloom = 1.0
-glow_blend_mode = 0
-glow_hdr_threshold = 1.5
-glow_bicubic_upscale = true
-
 [node name="Highscores" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,14 +34,13 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
-modulate = Color( 1, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main" type="Control" parent="Control"]
+[node name="Main" type="VBoxContainer" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -964, 107 )
@@ -77,8 +49,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control/Main"]
-margin_right = 1921.0
-margin_bottom = 355.0
+margin_right = 1920.0
+margin_bottom = 357.0
 rect_clip_content = true
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
@@ -89,22 +61,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_Back" type="Button" parent="Control/Main"]
-margin_left = 585.0
-margin_top = 283.0
-margin_right = 1348.0
-margin_bottom = 380.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "<< Back To Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Main"]
-margin_top = 432.0
-margin_right = 1922.0
-margin_bottom = 1075.0
+margin_top = 361.0
+margin_right = 1920.0
+margin_bottom = 718.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -112,16 +72,16 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/Main/ScrollContainer"]
-margin_right = 1922.0
-margin_bottom = 643.0
+margin_right = 1920.0
+margin_bottom = 357.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HighscoreList" type="VBoxContainer" parent="Control/Main/ScrollContainer/CenterContainer"]
-margin_left = 961.0
-margin_top = 321.0
-margin_right = 961.0
-margin_bottom = 321.0
+margin_left = 960.0
+margin_top = 178.0
+margin_right = 960.0
+margin_bottom = 178.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
@@ -130,11 +90,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "rainbow"
-anims/rainbow = SubResource( 6 )
+[node name="CenterContainer" type="CenterContainer" parent="Control/Main"]
+margin_top = 722.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 9 )
+[node name="Button_Back" type="Button" parent="Control/Main/CenterContainer"]
+margin_left = 854.0
+margin_top = 146.0
+margin_right = 1066.0
+margin_bottom = 211.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[connection signal="pressed" from="Control/Main/Button_Back" to="." method="_on_Button_Back_pressed"]
+[connection signal="pressed" from="Control/Main/CenterContainer/Button_Back" to="." method="_on_Button_Back_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/Gamejam2022.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/HighscoreBoard.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -181,17 +182,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control/Controls/VBoxContainer"]
-margin_top = 167.0
+margin_top = 133.0
 margin_right = 1920.0
-margin_bottom = 232.0
+margin_bottom = 198.0
 size_flags_vertical = 6
 text = "Controls"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Controls/VBoxContainer"]
-margin_top = 404.0
+margin_top = 335.0
 margin_right = 1920.0
-margin_bottom = 676.0
+margin_bottom = 745.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,7 +200,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Controls/VBoxContainer/HBoxContainer"]
 margin_right = 958.0
-margin_bottom = 272.0
+margin_bottom = 410.0
 size_flags_horizontal = 3
 alignment = 1
 
@@ -234,10 +235,26 @@ text = "Space"
 align = 1
 valign = 1
 
+[node name="Label5" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 276.0
+margin_right = 958.0
+margin_bottom = 341.0
+text = "+"
+align = 1
+valign = 1
+
+[node name="Label6" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 345.0
+margin_right = 958.0
+margin_bottom = 410.0
+text = "-"
+align = 1
+valign = 1
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/Controls/VBoxContainer/HBoxContainer"]
 margin_left = 962.0
 margin_right = 1920.0
-margin_bottom = 272.0
+margin_bottom = 410.0
 size_flags_horizontal = 3
 alignment = 1
 
@@ -268,17 +285,31 @@ margin_bottom = 272.0
 text = "Jump"
 valign = 1
 
+[node name="Label5" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 276.0
+margin_right = 958.0
+margin_bottom = 341.0
+text = "Increase Volume"
+valign = 1
+
+[node name="Label6" type="Label" parent="Control/Controls/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 345.0
+margin_right = 958.0
+margin_bottom = 410.0
+text = "Decrease Volume"
+valign = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="Control/Controls/VBoxContainer"]
-margin_top = 680.0
+margin_top = 749.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_vertical = 3
 
 [node name="Button_ControlsBack" type="Button" parent="Control/Controls/VBoxContainer/CenterContainer"]
 margin_left = 854.0
-margin_top = 167.0
+margin_top = 133.0
 margin_right = 1066.0
-margin_bottom = 232.0
+margin_bottom = 198.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -550,6 +581,9 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Highscores" parent="Control" instance=ExtResource( 4 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rainbow"
