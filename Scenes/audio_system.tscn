@@ -29,10 +29,12 @@ bus = "Arpsynth"
 stream = ExtResource( 5 )
 volume_db = -72.0
 autoplay = true
+bus = "Music"
 
 [node name="ASP_theme_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 autoplay = true
+bus = "Music"
 
 [node name="ASP_3" type="AudioStreamPlayer" parent="."]
 
