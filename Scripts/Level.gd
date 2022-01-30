@@ -2,6 +2,7 @@ extends Node2D
 
 const START_WITH_TUTORIAL: bool = true
 const acc = 4000
+const USE_SLICES_FOR_LEVEL_GENERATION: bool = false
 
 var player
 
@@ -56,7 +57,7 @@ func move_level(delta):
 	if position.x < -Globals.LEVEL_WIDTH:
 		Globals.scroll_speed += 1
 		position.x += 2 * Globals.LEVEL_WIDTH
-		if Globals.in_tutorial_level:
+		if Globals.in_tutorial_level or not USE_SLICES_FOR_LEVEL_GENERATION:
 			get_parent().current_level = LevelGenerator.load_next_level(get_parent().current_level)
 			for child in get_children():
 				remove_child(child)
