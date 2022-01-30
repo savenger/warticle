@@ -23,14 +23,14 @@ func _on_Timer_Theme_1_timeout():
 
 
 func toggle_mute(player: AudioStreamPlayer):
-	if player.volume_db == 0:
+	if player.volume_db == Globals.music_volume:
 		player.volume_db = -72
 	else:
-		player.volume_db = 0
+		player.volume_db = Globals.music_volume
 
 
 func _on_Timer_Sparkles_timeout():
-	$ASP_Sparkles.volume_db = 0
+	$ASP_Sparkles.volume_db = Globals.music_volume
 	$Timer_Sparkles2.start()
 
 
