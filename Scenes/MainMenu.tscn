@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Audio/Gamejam2022.wav" type="AudioStream" id=3]
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
@@ -28,9 +29,9 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "rainbow"
-length = 6.0
+length = 8.0
 loop = true
-step = 1.0
+step = 1.333
 tracks/0/type = "value"
 tracks/0/path = NodePath("Control:modulate")
 tracks/0/interp = 1
@@ -38,7 +39,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
@@ -64,7 +65,7 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="."]
-modulate = Color( 1, 1, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -547,6 +548,10 @@ anims/rainbow = SubResource( 6 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
 
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Start" to="." method="_on_Button_Start_pressed"]
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Controls" to="." method="_on_Button_Controls_pressed"]
