@@ -15,28 +15,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.333, 2.666, 2.667, 3.999, 5.332, 6.665, 7.998 ),
+"times": PoolRealArray( 0, 1.333, 1.334, 2.666, 3.999, 5.332, 6.665, 7.998 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 9, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 9, 9, 0, 1 ), Color( 0, 9, 0, 1 ), Color( 0, 9, 9, 1 ), Color( 0, 0, 9, 1 ), Color( 9, 0, 9, 1 ), Color( 9, 0, 0, 1 ) ]
 }
 
-[node name="tutorial3" type="Node2D"]
+[node name="level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0 )
+tile_data = PoolIntArray( 7, 0, 0, 8, 0, 0, 65543, 0, 0, 65544, 0, 0, 131072, 0, 0, 131073, 0, 0, 131079, 0, 0, 131080, 0, 0, 196608, 0, 0, 196609, 0, 0, 196615, 0, 0, 196616, 0, 0, 262144, 0, 0, 262145, 0, 0, 327680, 0, 0, 327681, 0, 0 )
 
 [node name="TileMap_Border" type="TileMap" parent="."]
 modulate = Color( 1, 0, 0, 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 65536, 0, 0, 131072, 0, 65536, 196608, 0, 65536, 262144, 0, 65540, 262145, 0, 10, 262146, 0, 10, 262147, 0, 11, 327680, 0, 196616, 327681, 0, 196617, 327682, 0, 196617, 327683, 0, 196619 )
+tile_data = PoolIntArray( 7, 0, 8, 8, 0, 11, 65543, 0, 65544, 65544, 0, 131083, 131072, 0, 8, 131073, 0, 11, 131079, 0, 65544, 131080, 0, 131083, 196608, 0, 65544, 196609, 0, 131083, 196615, 0, 196616, 196616, 0, 196619, 262144, 0, 65544, 262145, 0, 131083, 327680, 0, 196616, 327681, 0, 196619 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rainbow"
-playback_speed = 2.0
 anims/rainbow = SubResource( 1 )
