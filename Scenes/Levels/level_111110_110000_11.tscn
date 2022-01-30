@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Levels/level_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Levels/border_tileset.tres" type="TileSet" id=2]
+
+[node name="level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 180, 180 )
+format = 1
+<<<<<<< HEAD
+tile_data = PoolIntArray( 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 196616, 0, 0, 196618, 0, 0, 262152, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+=======
+tile_data = PoolIntArray( 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 196616, 0, 0, 196618, 0, 0, 262152, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+
+[node name="TileMap_Border" type="TileMap" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 180, 180 )
+format = 1
+tile_data = PoolIntArray( 131080, 0, 1, 131081, 0, 196610, 131082, 0, 3, 196616, 0, 65536, 196618, 0, 65536, 262152, 0, 65536, 262154, 0, 65536, 327680, 0, 196609, 327681, 0, 196611, 327688, 0, 131073, 327689, 0, 196610, 327690, 0, 131075 )
+tile_data = PoolIntArray( 3, 0, 0, 4, 0, 0, 65539, 0, 0, 65540, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 196616, 0, 0, 196618, 0, 0, 262152, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+>>>>>>> a1ac5b35399b2e2517eb8ba35ff7a10be5905458
