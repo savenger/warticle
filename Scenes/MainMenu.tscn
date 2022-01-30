@@ -108,48 +108,57 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Main/VBoxContainer/CenterContainer"]
-margin_left = 770.0
-margin_top = 74.0
-margin_right = 1149.0
-margin_bottom = 463.0
+margin_left = 722.0
+margin_top = 34.0
+margin_right = 1197.0
+margin_bottom = 504.0
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button_Start" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_right = 379.0
+margin_right = 475.0
 margin_bottom = 65.0
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_Controls" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="Button_Settings" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 81.0
-margin_right = 379.0
+margin_right = 475.0
 margin_bottom = 146.0
+text = "Settings"
+
+[node name="Button_Controls" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 162.0
+margin_right = 475.0
+margin_bottom = 227.0
 text = "Controls"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button_Settings" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 162.0
-margin_right = 379.0
-margin_bottom = 227.0
-text = "Settings"
+[node name="Button_Highscores" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
+margin_top = 243.0
+margin_right = 475.0
+margin_bottom = 308.0
+text = "Highscores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Button_Credits" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 243.0
-margin_right = 379.0
-margin_bottom = 308.0
+margin_top = 324.0
+margin_right = 475.0
+margin_bottom = 389.0
 text = "Credits"
 
 [node name="Button_Quit" type="Button" parent="Control/Main/VBoxContainer/CenterContainer/VBoxContainer"]
-margin_top = 324.0
-margin_right = 379.0
-margin_bottom = 389.0
+margin_top = 405.0
+margin_right = 475.0
+margin_bottom = 470.0
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -554,8 +563,9 @@ stream = ExtResource( 3 )
 autoplay = true
 
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Start" to="." method="_on_Button_Start_pressed"]
-[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Controls" to="." method="_on_Button_Controls_pressed"]
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Settings" to="." method="_on_Button_Settings_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Controls" to="." method="_on_Button_Controls_pressed"]
+[connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Highscores" to="." method="_on_Button_Highscores_pressed"]
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Credits" to="." method="_on_Button_Credits_pressed"]
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_Button_Quit_pressed"]
 [connection signal="pressed" from="Control/Controls/VBoxContainer/CenterContainer/Button_ControlsBack" to="." method="_on_Button_ControlsBack_pressed"]

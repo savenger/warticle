@@ -2,9 +2,12 @@ extends ColorRect
 
 var game_scene = "res://Scenes/World.tscn"
 
+
 func _on_Button_Quit_pressed():
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
+func _on_Button_Highscores_pressed():
+	get_tree().change_scene("res://Scenes/HighscoreBoard.tscn")
 
 func _on_Button_ControlsBack_pressed():
 	$Control/Controls.visible = false
