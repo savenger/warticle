@@ -7,6 +7,7 @@ const TUTORIAL_LEVEL_COUNT: int = 6
 var music_volume: float = -30.0
 var sfx_volume: float = -30.0
 var scroll_speed: int = 250
+var applyed_scroll_speed: int = 250 # the actual speed of the scrolling
 var tutorial_level: int = 0
 var in_tutorial_level: bool = true
 var score: int = 0
