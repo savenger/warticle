@@ -8,6 +8,8 @@ func die():
 	Globals.highscores.sort()
 	Globals.highscores.invert()
 	get_tree().reload_current_scene()
+	Globals.scroll_speed = 250
+	Globals.score = 0
 
 func _on_Pit_body_entered(body):
 	if body.name == "Player":

@@ -46,6 +46,8 @@ func switch_state():
 
 func _process(delta):
 	current_score += (float(Globals.scroll_speed) * min(time_as_wave, 30) if player_state == 1 else (vel.x if vel.x >= 0 else 0)) / 6000
+	if scroll_speedup:
+		current_score += float(Globals.scroll_speed) / 6000
 	if current_score > Globals.score:
 		Globals.score = current_score
 	#finish_tutorial_level(5)
