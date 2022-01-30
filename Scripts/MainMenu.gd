@@ -2,13 +2,17 @@ extends ColorRect
 
 var game_scene = "res://Scenes/World.tscn"
 
+"""
 func _ready():
 	$Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Slider_MusicVolume.set("value", Globals.audio_volume + 100)
 	$Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer2/Slider_SFXVolume.set("value", Globals.sfx_volume + 100)
+"""
 
 func _on_Button_Quit_pressed():
 	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
+func _on_Button_Highscores_pressed():
+	get_tree().change_scene("res://Scenes/HighscoreBoard.tscn")
 
 func _on_Button_ControlsBack_pressed():
 	$Control/Controls.visible = false

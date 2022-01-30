@@ -69,10 +69,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 5.333, 6.665, 7.998 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 2.00392, 0, 0, 1 ), Color( 2.00392, 2.00392, 0, 1 ), Color( 0, 2.00392, 0, 1 ), Color( 0, 2.00392, 2.00392, 1 ), Color( 0, 0, 2.00392, 1 ), Color( 2.00392, 0, 2.00392, 1 ), Color( 2.00392, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TopBar/Control_Score:self_modulate")
@@ -84,7 +84,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 9, 0, 0, 1 ), Color( 9, 9, 0, 1 ), Color( 0, 9, 0, 1 ), Color( 0, 9, 9, 1 ), Color( 0, 0, 9, 1 ), Color( 9, 0, 9, 1 ), Color( 9, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("TopBar/Control_AudioControlls:modulate")
@@ -96,7 +96,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+"values": [ Color( 2.00392, 0, 0, 1 ), Color( 2.00392, 2.00392, 0, 1 ), Color( 0, 2.00392, 0, 1 ), Color( 0, 2.00392, 2.00392, 1 ), Color( 0, 0, 2.00392, 1 ), Color( 2.00392, 0, 2.00392, 1 ), Color( 2.00392, 0, 0, 1 ) ]
 }
 
 [node name="UI" type="Control"]
@@ -189,7 +189,7 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="BottomBar"]
-self_modulate = Color( 1, 1, 0, 1 )
+self_modulate = Color( 0, 0, 2.00392, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0

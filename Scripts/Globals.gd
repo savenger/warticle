@@ -9,6 +9,7 @@ var scroll_speed: int = 250
 var tutorial_level: int = 0
 var in_tutorial_level: bool = true
 var score: int = 0
+var highscores = []
 
 func set_master_volume(new_volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), new_volume)

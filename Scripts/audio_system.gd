@@ -16,3 +16,24 @@ func _on_Button_MusicMute_toggled(button_pressed):
 func _on_Button_SFXMute_toggled(button_pressed):
 	print("SFX: " + str(button_pressed))
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),!button_pressed)
+
+
+func _on_Timer_Theme_1_timeout():
+	toggle_mute(get_node("ASP_theme_1"))
+
+
+func toggle_mute(player: AudioStreamPlayer):
+	if player.volume_db == 0:
+		player.volume_db = -72
+	else:
+		player.volume_db = 0
+
+
+func _on_Timer_Sparkles_timeout():
+	$ASP_Sparkles.volume_db = 0
+	$Timer_Sparkles2.start()
+
+
+func _on_Timer_Sparkles2_timeout():
+	$ASP_Sparkles.volume_db = -72
+	$Timer_Sparkles.start()

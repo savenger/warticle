@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Audio/gamejam_2022_bass_0.wav" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Audio/gamejam_2022_drums_full.wav" type="AudioStream" id=2]
 [ext_resource path="res://Assets/Audio/gamejam_2022_arpsynth_openfilter.wav" type="AudioStream" id=3]
 [ext_resource path="res://Scripts/audio_system.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Audio/Gamejam2022_sparkles.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/Gamejam2022_synttheme_1.wav" type="AudioStream" id=6]
 
 [node name="audio_system" type="Node2D"]
 script = ExtResource( 4 )
@@ -13,12 +15,42 @@ stream = ExtResource( 2 )
 autoplay = true
 bus = "Music"
 
+[node name="asp_beat_bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Bass"
+
 [node name="asp_beat_arpsynth" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 bus = "Arpsynth"
 
-[node name="asp_beat_bass" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
+[node name="ASP_Sparkles" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -72.0
 autoplay = true
-bus = "Bass"
+
+[node name="ASP_theme_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="ASP_3" type="AudioStreamPlayer" parent="."]
+
+[node name="ASP_4" type="AudioStreamPlayer" parent="."]
+
+[node name="ASP_5" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer_Sparkles" type="Timer" parent="."]
+wait_time = 32.0
+autostart = true
+
+[node name="Timer_Sparkles2" type="Timer" parent="."]
+wait_time = 21.333
+
+[node name="Timer_Theme_1" type="Timer" parent="."]
+wait_time = 21.333
+autostart = true
+
+[connection signal="timeout" from="Timer_Sparkles" to="." method="_on_Timer_Sparkles_timeout"]
+[connection signal="timeout" from="Timer_Sparkles2" to="." method="_on_Timer_Sparkles2_timeout"]
+[connection signal="timeout" from="Timer_Theme_1" to="." method="_on_Timer_Theme_1_timeout"]

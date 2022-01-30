@@ -21,13 +21,17 @@ func _ready():
 	speed = rand_range(1.0 , 3.0)
 	position = Vector2( x_pos, y_pos )
 	scale = Vector2(speed,speed)/3
-	
-	var r_col = pow(rand_range(0.0 , 1),2)*0.3
+	"""
+	var r_col = pow(rand_range(0.0 , 1),2)*0.1
 	var g_col = pow(rand_range(0.0 , 1),2)*0.3
 	var b_col = pow(rand_range(0.0 , 1),2)*0.3
+	"""
 	
-	color = Vector3(r_col,g_col,b_col)
-	get_node("Sprite").material.set_shader_param("color",color)
+	var cols = [Color(1,0,0),Color(0,1,0),Color(0,0,1),Color(1,1,0),Color(0,1,1),Color(1,0,1)]
+	var i = int(rand_range(0,6))
+	
+	color = Vector3(cols[i].r,cols[i].g,cols[i].b)*0.2
+	$Sprite.material.set_shader_param("color",color)
 	
 	# "camera" needs to be initialized
 
@@ -35,9 +39,13 @@ func _ready():
 func _process(delta):
 	
 	if player.player_state == 0: # wave
-		position.x -= Globals.scroll_speed * delta * 0.5
+		position.x -= speed * Globals.scroll_speed * delta * 0.5
+		scale.x = speed*1/3
+		scale.y = speed/3
 	else: # particle
-		position.x -= Globals.scroll_speed * 3 * delta * 0.5
+		position.x -= speed * Globals.scroll_speed * 20 * delta * 0.5
+		scale.x = speed*2
+		scale.y = speed/3/2
 	
 	var left_border = -100   #camera.position.x - s_size.x / 1.5
 	var right_border = s_size.x+100  #camera.position.x + s_size.x / 1.5

@@ -55,7 +55,7 @@ func _process(delta):
 	if Input.is_action_pressed("volume_down"):
 		Globals.audio_volume -= 10 * delta
 		Globals.set_master_volume(Globals.audio_volume)
-	if Input.is_action_just_pressed("switch_button"):
+	if Input.is_action_just_pressed("switch_button") and Globals.tutorial_level >= 3:
 		switch_state()
 	scroll_speedup = self.global_position.x > Globals.LEVEL_WIDTH * 0.96 and Input.is_action_pressed("move_right_button")
 
@@ -69,7 +69,7 @@ func _physics_process(delta):
 		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
-		if Input.is_action_just_pressed("jump_button"):
+		if Input.is_action_just_pressed("jump_button") and Globals.tutorial_level >= 1:
 			if is_on_floor():
 				finish_tutorial_level(1)
 				vel.y -= jump_speed
