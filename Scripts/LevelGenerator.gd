@@ -5,6 +5,7 @@ const SLICE_PATH: String = 'res://Scenes/Slices'
 const MAX_ENTRY_COUNT: int = 6
 const MAX_BOXES = 11
 var tutorial_levels: Array = []
+var load_second_tutorial = true
 
 var rng = RandomNumberGenerator.new()
 
@@ -165,7 +166,11 @@ func load_next_level(level) -> String:
 		# return next tutorial level
 		#var index = tutorial_levels.find(level)
 		#if index == 0:
-		return tutorial_levels[Globals.tutorial_level]
+		if load_second_tutorial:
+			load_second_tutorial = false
+			return tutorial_levels[1]
+		else:
+			return tutorial_levels[Globals.tutorial_level]
 		#else:
 		#	return tutorial_levels[0]
 	# print("Connecting level ", level)

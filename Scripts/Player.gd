@@ -82,13 +82,11 @@ func _physics_process(delta):
 			elif is_on_wall():
 				finish_tutorial_level(2)
 				if Input.is_action_pressed("move_right_button"):
-					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x -= Globals.scroll_speed * 2
 					$SFX/ASP_Jump.play()
 				if Input.is_action_pressed("move_left_button"):
-					finish_tutorial_level(0)
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x += Globals.scroll_speed * 2
