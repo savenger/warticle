@@ -83,6 +83,10 @@ func _physics_process(delta):
 	else: # wave movement
 		vel.y = 0
 		var target_speed = get_input_x() * speed / 2 * int(!scroll_speedup)
+		#var multiplier = speed
+		#if Globals.in_tutorial_level:
+		#	multiplier /= 2
+		#var target_speed = -Globals.scroll_speed + multiplier * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		if Input.is_action_just_pressed("jump_button"):
 			finish_tutorial_level(1)
