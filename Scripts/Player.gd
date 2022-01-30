@@ -70,6 +70,8 @@ func _physics_process(delta):
 		if is_on_floor() and not can_jump:
 			can_jump = true
 		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
+		if Globals.tutorial_level == 0:
+			target_speed = 0
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
 		if Input.is_action_just_pressed("jump_button") and Globals.tutorial_level >= 1:
