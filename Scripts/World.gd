@@ -3,8 +3,21 @@ extends Node2D
 var current_level: String
 var current_slices: Array
 
+"""
+func _ready():
+	var arr = ["",11,1,"",4]
+	arr.sort_custom(self, "customComparison")
+	print (arr)
+
+func customComparison(a, b):
+	if typeof(a) != typeof(b):
+		return typeof(a) < typeof(b)
+	else:
+		return a < b
+"""
+
 func die():
-	Globals.highscores.append( "Test "+ str($Timer.count) )
+	Globals.highscores.append($Timer.count)
 	Globals.highscores.sort()
 	Globals.highscores.invert()
 	get_tree().reload_current_scene()

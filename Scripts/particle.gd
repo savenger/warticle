@@ -43,7 +43,7 @@ func _process(delta):
 		scale.x = speed*1/3
 		scale.y = speed/3
 	else: # particle
-		position.x -= speed * Globals.scroll_speed * 20 * delta * 0.5
+		position.x -= speed * Globals.scroll_speed * 8 * delta * 0.5
 		scale.x = speed*2
 		scale.y = speed/3/2
 	
