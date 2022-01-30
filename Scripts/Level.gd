@@ -9,7 +9,6 @@ var vel = Globals.scroll_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(get_parent().name)
 	player = get_parent().get_node("rainbow_animation/Player")
 	if name == "Level1":
 		if START_WITH_TUTORIAL:
@@ -38,14 +37,13 @@ func create_scene(slices):
 	var root = scene.instance()
 	var offset = 0
 	for slice in slices:
-		print("adding slice: %s" % slice)
+		# print("adding slice: %s" % slice)
 		var boxes = LevelGenerator.get_slice_boxes(slice)
 		var slice_scene = load(slice).instance()
 		slice_scene.position.x = offset
 		root.add_child(slice_scene)
 		offset += 180 * boxes
-	var inst = root
-	return inst
+	return root
 
 func move_level(delta):
 	var target_speed = Globals.scroll_speed

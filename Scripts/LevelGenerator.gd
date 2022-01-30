@@ -168,12 +168,12 @@ func load_next_level(level) -> String:
 			return tutorial_levels[Globals.tutorial_level]
 		else:
 			return tutorial_levels[0]
-	print("Connecting level ", level)
+	# print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = extract_possible_exits(exits)
 	var rnd_exit = get_random_element(possible_exits)
 	var rnd_entry_level = rng.randi_range(0, len(level_entry_map[rnd_exit]) - 1)
-	print(" ... to level ", level_entry_map[rnd_exit][rnd_entry_level])
+	# print(" ... to level ", level_entry_map[rnd_exit][rnd_entry_level])
 	return(level_entry_map[rnd_exit][rnd_entry_level])
 
 func load_next_level_sliced(slices) -> Array:
