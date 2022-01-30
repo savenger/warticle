@@ -21,20 +21,20 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[node name="tutorial3" type="Node2D"]
+[node name="level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0 )
+tile_data = PoolIntArray( 196615, 0, 0, 196616, 0, 0, 262144, 0, 0, 262145, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0 )
 
 [node name="TileMap_Border" type="TileMap" parent="."]
 modulate = Color( 1, 0, 0, 1 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 180, 180 )
 format = 1
-tile_data = PoolIntArray( 65536, 0, 0, 131072, 0, 65536, 196608, 0, 65536, 262144, 0, 65540, 262145, 0, 10, 262146, 0, 9, 262147, 0, 11, 327680, 0, 196616, 327681, 0, 196617, 327682, 0, 196618, 327683, 0, 196619 )
+tile_data = PoolIntArray( 196615, 0, 8, 196616, 0, 11, 262144, 0, 8, 262145, 0, 11, 262150, 0, 196609, 262151, 0, 196613, 262152, 0, 196614, 262153, 0, 196611, 327680, 0, 196616, 327681, 0, 196614, 327682, 0, 196611 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "rainbow"

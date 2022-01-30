@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Levels/level_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Levels/border_tileset.tres" type="TileSet" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rainbow"
+length = 8.0
+loop = true
+step = 1.333
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap_Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.333, 2.666, 2.667, 3.999, 5.332, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [node name="level" type="Node2D"]
 
@@ -9,9 +27,6 @@
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 180, 180 )
 format = 1
-<<<<<<< HEAD
-tile_data = PoolIntArray( 131081, 0, 0, 131082, 0, 0, 196617, 0, 0, 196618, 0, 0, 262153, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327689, 0, 0, 327690, 0, 0 )
-=======
 tile_data = PoolIntArray( 131081, 0, 0, 131082, 0, 0, 196612, 0, 0, 196613, 0, 0, 196617, 0, 0, 196618, 0, 0, 262148, 0, 0, 262149, 0, 0, 262153, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327684, 0, 0, 327685, 0, 0, 327689, 0, 0, 327690, 0, 0 )
 
 [node name="TileMap_Border" type="TileMap" parent="."]
@@ -20,4 +35,8 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 180, 180 )
 format = 1
 tile_data = PoolIntArray( 131081, 0, 8, 131082, 0, 11, 196612, 0, 8, 196613, 0, 11, 196617, 0, 65544, 196618, 0, 65547, 262148, 0, 65544, 262149, 0, 131083, 262153, 0, 131080, 262154, 0, 65547, 327680, 0, 196609, 327681, 0, 196611, 327684, 0, 196616, 327685, 0, 196619, 327689, 0, 196616, 327690, 0, 196619 )
->>>>>>> a1ac5b35399b2e2517eb8ba35ff7a10be5905458
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+playback_speed = 2.0
+anims/rainbow = SubResource( 1 )
