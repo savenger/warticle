@@ -13,6 +13,7 @@ config_version=4
 config/name="warticle"
 run/main_scene="res://Scenes/World.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://warticle.ico"
 
 [autoload]
 
@@ -23,7 +24,6 @@ LevelGenerator="*res://Scripts/LevelGenerator.gd"
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
