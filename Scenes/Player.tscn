@@ -49,6 +49,7 @@ shape = SubResource( 1 )
 visible = false
 material = SubResource( 12 )
 position = Vector2( -1, 0 )
+default_color = Color( 0.4, 0.501961, 1, 1 )
 gradient = SubResource( 14 )
 texture_mode = 2
 script = ExtResource( 5 )

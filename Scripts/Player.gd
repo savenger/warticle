@@ -45,6 +45,8 @@ func switch_state():
 		time_as_wave = 0
 
 func _process(delta):
+	if time_as_wave > 1.2:
+		can_jump = true
 	if not Globals.in_tutorial_level:
 		current_score += (float(Globals.scroll_speed) * min(time_as_wave, 30) if player_state == 1 else (vel.x if vel.x >= 0 else 0)) / 6000
 		if scroll_speedup:
