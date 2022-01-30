@@ -163,11 +163,11 @@ func load_next_level(level) -> String:
 			# (player is in first tutorial level again)
 			return(level_entry_map[3][0])
 		# return next tutorial level
-		var index = tutorial_levels.find(level)
-		if index == 0:
-			return tutorial_levels[Globals.tutorial_level]
-		else:
-			return tutorial_levels[0]
+		#var index = tutorial_levels.find(level)
+		#if index == 0:
+		return tutorial_levels[Globals.tutorial_level]
+		#else:
+		#	return tutorial_levels[0]
 	# print("Connecting level ", level)
 	var exits = get_exits(level)
 	var possible_exits = extract_possible_exits(exits)
