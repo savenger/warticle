@@ -17,9 +17,10 @@ func customComparison(a, b):
 """
 
 func die():
-	Globals.highscores.append($Timer.count)
+	Globals.highscores.append(Globals.score)
 	Globals.highscores.sort()
 	Globals.highscores.invert()
+	
 	get_tree().reload_current_scene()
 
 func _on_Pit_body_entered(body):
