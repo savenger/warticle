@@ -43,6 +43,8 @@ glow_bicubic_upscale = true
 [node name="MainMenu" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
 theme = ExtResource( 4 )
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 2 )
@@ -546,4 +548,6 @@ autoplay = true
 [connection signal="pressed" from="Control/Main/VBoxContainer/CenterContainer/VBoxContainer/Button_Quit" to="." method="_on_Button_Quit_pressed"]
 [connection signal="pressed" from="Control/Controls/VBoxContainer/CenterContainer/Button_ControlsBack" to="." method="_on_Button_ControlsBack_pressed"]
 [connection signal="pressed" from="Control/Credits/VBoxContainer/CenterContainer/Button_CreditsBack" to="." method="_on_Button_CreditsBack_pressed"]
+[connection signal="value_changed" from="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer/Slider_MusicVolume" to="." method="_on_Slider_MusicVolume_value_changed"]
+[connection signal="value_changed" from="Control/Settings/VBoxContainer/HBoxContainer/VBoxContainer/CenterContainer2/Slider_SFXVolume" to="." method="_on_Slider_SFXVolume_value_changed"]
 [connection signal="pressed" from="Control/Settings/VBoxContainer/CenterContainer/Button_SettingsBack" to="." method="_on_Button_SettingsBack_pressed"]
