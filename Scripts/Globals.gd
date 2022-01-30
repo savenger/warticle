@@ -12,3 +12,9 @@ var highscores = []
 
 func set_master_volume(new_volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), new_volume)
+
+func set_music_volume(new_volume):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), new_volume)
+	
+func set_sfx_volume(new_volume):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), new_volume)

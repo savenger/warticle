@@ -15,7 +15,7 @@ func _process(_delta):
 		 
 		match current_level:
 			0:
-				new_text = "You are a little photon. You are a wave, and you are a particle. A warticle!\nPress [b]A/D [/b] to move left/right."
+				new_text = "You are a little photon. You are a [wave amp=50 freq=16]wave[/wave] , and you are a [shake rate=5 level=10]particle[/shake]. [shake rate=5 level=10][rainbow freq=0.2 sat=10 val=20][wave amp=50 freq=16]A warticle![/wave][/rainbow][/shake] \nPress [b]A/D [/b] to move left/right."
 			1: 
 				new_text = "Press [b]Space[/b] to jump."
 			2: 
