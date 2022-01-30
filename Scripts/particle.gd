@@ -49,7 +49,7 @@ func _process(delta):
 		var at_speed_scale = Vector2(speed*2,speed/3/2)
 		
 		scale.x = Globals.applyed_scroll_speed/250.0#mix(normale_scale.x,at_speed_scale.x,x)
-		scale.y = 1/sqrt(Globals.applyed_scroll_speed/250.0)
+		scale.y = 1/pow(Globals.applyed_scroll_speed/250.0,0.6)
 	else:
 		if player.player_state == 0: # particle
 			scale.x = speed/3
