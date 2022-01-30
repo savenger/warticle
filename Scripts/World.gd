@@ -38,7 +38,7 @@ func _on_Right_body_entered(body):
 		die()
 
 func _input(ev):
-	if ev is InputEventKey and ev.scancode == KEY_M:
+	if ev is InputEventKey and (ev.scancode == KEY_M or ev.scancode == KEY_ESCAPE):
 		get_tree().change_scene("res://Scenes/MainMenu.tscn")
 		
 		
