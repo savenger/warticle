@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI_Theme/music_icon.png" type="Texture" id=2]
@@ -98,16 +98,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [ Color( 2.00392, 0, 0, 1 ), Color( 2.00392, 2.00392, 0, 1 ), Color( 0, 2.00392, 0, 1 ), Color( 0, 2.00392, 2.00392, 1 ), Color( 0, 0, 2.00392, 1 ), Color( 2.00392, 0, 2.00392, 1 ), Color( 2.00392, 0, 0, 1 ) ]
 }
-
-[sub_resource type="Environment" id=9]
-background_mode = 4
-glow_enabled = true
-glow_intensity = 3.64
-glow_strength = 0.38
-glow_bloom = 1.0
-glow_blend_mode = 0
-glow_hdr_threshold = 1.5
-glow_bicubic_upscale = true
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -228,9 +218,6 @@ autoplay = "rainbow"
 playback_speed = 2.0
 anims/RESET = SubResource( 8 )
 anims/rainbow = SubResource( 7 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 9 )
 
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_SFXMute" to="audio_system" method="_on_Button_SFXMute_toggled"]
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_MusicMute" to="audio_system" method="_on_Button_MusicMute_toggled"]
