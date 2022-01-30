@@ -29,6 +29,7 @@ func finish_tutorial_level(level):
 			Globals.tutorial_level += 1
 
 func switch_state():
+	$SFX/ASP_Switch.play()
 	if player_state == 0:
 		finish_tutorial_level(3)
 		$Sprite.visible = false
@@ -66,6 +67,7 @@ func _physics_process(delta):
 			if is_on_floor():
 				finish_tutorial_level(1)
 				vel.y -= jump_speed
+				$SFX/ASP_Jump.play()
 			elif is_on_wall():
 				finish_tutorial_level(2)
 				if Input.is_action_pressed("move_right_button"):
@@ -73,6 +75,7 @@ func _physics_process(delta):
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x -= Globals.scroll_speed * 2
+					$SFX/ASP_Jump.play()
 				if Input.is_action_pressed("move_left_button"):
 					finish_tutorial_level(0)
 					vel.y = 0
