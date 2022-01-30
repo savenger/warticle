@@ -6,11 +6,15 @@ const gravity = Globals.GRAVITY
 const speed = 900
 const wave_speed = speed * 2
 const jump_speed = 2000
-const acc = 5000
+const acc = 8000
 
 var vel = Vector2(0,0)
 var scroll_speedup = false
 var can_jump = true
+
+func _ready():
+	scale.x *= 0.5
+	scale.y *= 0.5
 
 func get_input_x():
 	var x_speed = Input.get_action_strength("move_right_button") - Input.get_action_strength("move_left_button")
