@@ -54,6 +54,7 @@ modulate = Color( 1, 0, 0, 1 )
 
 [node name="Player" parent="rainbow_animation" instance=ExtResource( 2 )]
 position = Vector2( 500.766, 71 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="rainbow_animation"]
 root_node = NodePath("../..")
@@ -92,7 +93,7 @@ margin_bottom = 1080.0
 environment = SubResource( 3 )
 
 [node name="Wall" parent="." instance=ExtResource( 7 )]
-position = Vector2( 959, -95 )
+position = Vector2( 955, -74 )
 scale = Vector2( 1.04437, 1 )
 
 [connection signal="body_entered" from="Pit" to="." method="_on_Pit_body_entered"]
