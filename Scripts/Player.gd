@@ -6,11 +6,14 @@ const gravity = Globals.GRAVITY
 const speed = 900
 const wave_speed = speed * 2
 const jump_speed = 2000
-const acc = 5000
+const acc = 8000
 
 var vel = Vector2(0,0)
 var scroll_speedup = false
 var can_jump = true
+
+func _ready():
+	pass
 
 func get_input_x():
 	var x_speed = Input.get_action_strength("move_right_button") - Input.get_action_strength("move_left_button")
@@ -25,6 +28,7 @@ func finish_tutorial_level(level):
 			Globals.tutorial_level += 1
 
 func switch_state():
+	$SFX/ASP_Switch.play()
 	if player_state == 0:
 		finish_tutorial_level(3)
 		$Sprite.visible = false
@@ -58,10 +62,11 @@ func _physics_process(delta):
 		var target_speed = -Globals.scroll_speed + input_x * speed * int(!scroll_speedup)
 		vel.x = move_toward(vel.x, target_speed, delta * acc)
 		vel.y += gravity * delta
-		if Input.is_action_pressed("jump_button"):
+		if Input.is_action_just_pressed("jump_button"):
 			if is_on_floor():
 				finish_tutorial_level(1)
 				vel.y -= jump_speed
+				$SFX/ASP_Jump.play()
 			elif is_on_wall():
 				finish_tutorial_level(2)
 				if Input.is_action_pressed("move_right_button"):
@@ -69,6 +74,7 @@ func _physics_process(delta):
 					vel.y = 0
 					vel.y -= jump_speed
 					vel.x -= Globals.scroll_speed * 2
+					$SFX/ASP_Jump.play()
 				if Input.is_action_pressed("move_left_button"):
 					finish_tutorial_level(0)
 					vel.y = 0
@@ -76,10 +82,14 @@ func _physics_process(delta):
 					vel.x += Globals.scroll_speed * 2
 	else: # wave movement
 		vel = Vector2(0,0)
-		if Input.is_action_pressed("jump_button"):
+		if Input.is_action_just_pressed("jump_button"):
 			finish_tutorial_level(1)
 			switch_state()
 			if can_jump:
 				vel.y -= jump_speed
 				can_jump = false
+		if is_on_wall():
+			switch_state()
 	vel = move_and_slide(vel, Vector2(0, -1))
+	if is_on_wall() and player_state == 1:
+		switch_state()

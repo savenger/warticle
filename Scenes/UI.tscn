@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/UI_Theme/architxt.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Assets/UI_Theme/music_icon.png" type="Texture" id=2]
@@ -6,6 +6,16 @@
 [ext_resource path="res://Scenes/audio_system.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=5]
 [ext_resource path="res://Assets/UI_Theme/architxt_32px.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/UI_Theme/check_off.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI_Theme/check_on.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -13,6 +23,9 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
+CheckButton/icons/off = ExtResource( 7 )
+CheckButton/icons/on = ExtResource( 8 )
+PanelContainer/styles/panel = SubResource( 6 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 32
@@ -36,6 +49,75 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopBar/Control_Score:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.054902, 1, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TopBar/Control_AudioControlls:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "rainbow"
+length = 8.0
+loop = true
+step = 1.333
+tracks/0/type = "value"
+tracks/0/path = NodePath("BottomBar/PanelContainer:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 5.333, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TopBar/Control_Score:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TopBar/Control_AudioControlls:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.333, 2.666, 3.999, 5.332, 6.665, 7.998 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 0, 1 ), Color( 0, 1, 0, 1 ), Color( 0, 1, 1, 1 ), Color( 0, 0, 1, 1 ), Color( 1, 0, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,6 +130,7 @@ __meta__ = {
 [node name="TopBar" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 margin_left = 16.0
+margin_top = 16.0
 margin_right = -16.0
 alignment = 1
 __meta__ = {
@@ -55,20 +138,23 @@ __meta__ = {
 }
 
 [node name="Control_Score" type="PanelContainer" parent="TopBar"]
-margin_right = 516.0
-margin_bottom = 79.0
+self_modulate = Color( 0.054902, 1, 0, 1 )
+margin_right = 510.0
+margin_bottom = 104.0
 
 [node name="Panel" type="HBoxContainer" parent="TopBar/Control_Score"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 509.0
-margin_bottom = 72.0
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 506.0
+margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label_Score" type="Label" parent="TopBar/Control_Score/Panel"]
+margin_top = 15.0
 margin_right = 298.0
-margin_bottom = 65.0
+margin_bottom = 80.0
 text = "Score: "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -76,35 +162,38 @@ __meta__ = {
 
 [node name="Label_ScoreValue" type="Label" parent="TopBar/Control_Score/Panel"]
 margin_left = 302.0
+margin_top = 15.0
 margin_right = 502.0
-margin_bottom = 65.0
+margin_bottom = 80.0
 text = "0000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control_Stretcher" type="Control" parent="TopBar"]
-margin_left = 520.0
-margin_right = 1600.0
-margin_bottom = 79.0
+margin_left = 514.0
+margin_right = 1344.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 
 [node name="Control_AudioControlls" type="HBoxContainer" parent="TopBar"]
-margin_left = 1604.0
+margin_left = 1348.0
 margin_right = 1888.0
-margin_bottom = 79.0
+margin_bottom = 104.0
 alignment = 2
 
 [node name="Button_SFXMute" type="CheckButton" parent="TopBar/Control_AudioControlls"]
-margin_right = 140.0
-margin_bottom = 79.0
+margin_right = 268.0
+margin_bottom = 104.0
+pressed = true
 icon = ExtResource( 3 )
 flat = true
 
 [node name="Button_MusicMute" type="CheckButton" parent="TopBar/Control_AudioControlls"]
-margin_left = 144.0
-margin_right = 284.0
-margin_bottom = 79.0
+margin_left = 272.0
+margin_right = 540.0
+margin_bottom = 104.0
+pressed = true
 icon = ExtResource( 2 )
 flat = true
 
@@ -119,17 +208,21 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="BottomBar"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BottomBar/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1913.0
-margin_bottom = 101.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1884.0
+margin_bottom = 88.0
 custom_fonts/bold_font = SubResource( 5 )
 custom_fonts/normal_font = ExtResource( 6 )
 bbcode_enabled = true
@@ -138,6 +231,12 @@ text = "You are a little light particle \\nPress A/D  to move left/right."
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BottomBar"]
 anims/fadeout = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "rainbow"
+playback_speed = 2.0
+anims/RESET = SubResource( 8 )
+anims/rainbow = SubResource( 7 )
 
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_SFXMute" to="audio_system" method="_on_Button_SFXMute_toggled"]
 [connection signal="toggled" from="TopBar/Control_AudioControlls/Button_MusicMute" to="audio_system" method="_on_Button_MusicMute_toggled"]
